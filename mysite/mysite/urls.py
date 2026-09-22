@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app_blog.urls')), # Перенаправляємо головну сторінку до app_blog
+    path('', include('app_blog.urls')), 
 ]
