@@ -6,7 +6,6 @@ from .forms import ArticleImageForm
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('category', 'slug')
-    # ЗАВДАННЯ З МЕТОДИЧКИ: автозаповнення слага на основі назви категорії
     prepopulated_fields = {'slug': ('category',)}
     fieldsets = (
         (None, {
@@ -27,7 +26,8 @@ class ArticleImageInline(admin.TabularInline):
     )
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'pub_date', 'slug', 'main_page')
+    list_display = ('title', 'pub_date', 'slug', 'category', 'main_page')
+    list_select_related = ("category",)
     inlines = [ArticleImageInline]
     multiupload_form = True
     multiupload_list = False
